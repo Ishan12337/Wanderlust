@@ -3,7 +3,6 @@
     "engines": {
       "node": "22.x"
     },
-  
   "name": "project",
   "version": "1.0.0",
   "main": "index.js",
