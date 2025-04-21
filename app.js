@@ -25,6 +25,7 @@ const ejsMate = require("ejs-mate");            //ejs mate is a boiler plate to 
 
 const dbUrl = process.env.ATLASDB_URL;
 
+
 main()
 .then(() => {
     console.log("connected to db!");
@@ -32,6 +33,7 @@ main()
 .catch((err) => {
     console.log(`error is occered ${err}`);
 });
+
 
 async function main() {
     await mongoose.connect(dbUrl);
@@ -74,6 +76,14 @@ const sessionOptions = {
 app.use(session(sessionOptions));
 app.use(flash());
 
+
+app.use((req, res, next) => {
+    res.locals.currUser = req.user || null;
+    next();
+  });
+
+
+
 //passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -94,12 +104,13 @@ app.use((req,res,next) => {
 
 
 
+
 app.use("/listings", listingRouter);  //listingRouter
-app.use("/listings", reviewRouter);   //reviewRouter     ///:id/reviews
+app.use("/listings", reviewRouter);   //reviewRouter   
 app.use("/", userRouter);
 
 
-  ////////////////////////////////////////////// 
+ 
 
 app.all("*",(req,res,next) => {
     next(new ExpressError(404, "page not found!"));

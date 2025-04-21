@@ -1,0 +1,42 @@
+
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+    <h2>👤 Welcome <%= currUser.username %>!</h2> 
+    
+    <div class="row">
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Your Profile</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Email:</strong> <%= currUser.email %></p>
+                    <p><strong>Username:</strong> <%= currUser.username %></p>
+                </div>
+            </div>
+              
+        </div>
+
+        <!-- Actions Section -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Your Actions</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                         <li class="nav-link"><a href="/listings/new">Wanderlust your Home</a></li>   <!-- list-group-item -->
+                         
+                        <li class="nav-link"><a href="/listings">Explore</a></li>
+                        <li class="nav-link"><a href="/logout" class="text-danger">Logout</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

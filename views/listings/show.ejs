@@ -1,46 +1,61 @@
+<% layout('/layouts/boilerplate') %>
+ 
+<style>
+  .listing-card{
+    width: 35vw;
+  }
+  .card-body p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
 
-<% layout("/layouts/boilerplate") %>
-  
+.card-body strong {
+    color: #333;
+}
+
+
+</style>
+
+
+<main class="container my-4">
 <body class="body">
-  
 <div class="showpage">
 <div class="row mt-3">
-    <div class="col-8 offset-3">
+    <div class="col-8 offset-2">
 
-
-
-     <h3> <b><%= listing.title %></b> </h3>
+     <h3 class="col-8 offset-1 listing-car">&nbsp;&nbsp;&nbsp; <b><%= listing.title %></b> </h3>
  </div>
 
     <div class="wanderlust-card">
      <div class="card col-6 offset-3 show-card listing-card">
-        <div class="card" style="width: 20rem; border: none !important">
+        <div class="card" style="border: none !important">
             <img src="<%= listing.image?.url || listing.image %>" class="card-img-top show-img" alt="listing_img"  >    <!-- width="25vw" -->
 
             <div class="card-body">
-              <p class="card-text"> <i>Owned by <b><%= listing.owner.username %></b></i></p>      
-                    <p style="width: 35vw;"><%= listing.description %> </p> <br>
-                    <p> &#8377; <%= listing.price.toLocaleString("en-IN") %> / night </p><br>
-                    <p>📍<%= listing.location %> </p><br>
-                    <p><%= listing.country %></p> <br>
+              <p class="card-text"> 👤<i>Owned by <b><%= listing.owner.username %></b></i></p>      
+                    <p style="width: 35vw;"><strong>Description:</strong> <%= listing.description %> </p> <br>
+                    <strong>Price:</strong> <p> &#8377; <%= listing.price.toLocaleString("en-IN") %> / night </p><br>
+                    <strong>Location:</strong><p>📍<%= listing.location %> </p><br>
+                    <strong>Country:</strong><p> &nbsp;  <%= listing.country %></p> <br>
 
             </div>
           </div>
       </div>
     </div>
     
-    <!-- </form> -->
+ 
   </div>
      
   <% if( currUser && currUser._id.equals(listing.owner._id)) { %>
- <div class="btns">
-    <a href="/listings/<%= listing._id %>/edit" type = "button" class="btn btn-outline-primary col-1 offset-3">Edit</a>
-   
 
-    <form method="POST" action="/listings/<%=listing.id%>?_method=DELETE"> 
-        <button  class="btn btn-outline-danger offset-5">Delete </button>
-      </form>
- </div>
+
+  <div class="text-center my-3">
+    <a href="/listings/<%= listing._id %>/edit" class="btn btn-outline-primary mx-2">Edit</a>
+    <form method="POST" action="/listings/<%=listing.id%>?_method=DELETE" class="d-inline">
+      <button class="btn btn-outline-danger mx-2">Delete</button>
+    </form>
+  </div>
+  
  <% } %>
   <hr>
 
@@ -70,7 +85,7 @@
       <p><b> All Listings : </b></p>
         <div class="row">
      <% for(review of listing.reviews) { %>
-     <div class="card col-5 ms-3 mb-3">
+     <div class="card col-md-5 mx-2 mb-4">      <!-- card col-5 ms-3 mb-3 -->
       <div class="card-body" >
         <h5 class="card-title">@<%= review.author.username %></h5>
         <div class="starability-result" data-rating="<%= review.rating %>">stars</div>
@@ -83,12 +98,13 @@
           <button class="btn btn-sm btn-dark"> Delete</button>
         </form>
       <% } %>
-      
+       </div>
+       <% } %>
+      </div>
      </div>
-     <% } %>
-  </div>
-</div>
-</div>
-<br><br>
-</div>
-</body>
+    </div>
+    <br><br>
+    <br><br>
+   </div>
+ </body>
+</main>

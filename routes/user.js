@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync");
 const passport = require("passport");
-const {saveRedirectUrl} = require("../middleware.js");
+const {saveRedirectUrl, isLoggedIn} = require("../middleware.js");
 
 
 const userController = require("../controllers/users.js");
@@ -22,7 +22,16 @@ router.route("/login")
          failureFlash: true,
         }),
         userController.loginUser
-    );
+);
+
+
+router.get("/profile", isLoggedIn, (req, res) => {
+    res.render("users/profile", { 
+        currUser: req.user,
+        body: "users/profile"  
+    });
+});
+
 
 //logged out
 router.get("/logout", userController.logoutUser)

@@ -41,6 +41,8 @@ module.exports.signupUser = async(req,res) =>{
     res.redirect(redirectUrl);    // req.session.redirectUrl
 };
 
+
+
 //logout page
 module.exports.logoutUser = (req,res, next) =>{
     req.logout((err) =>{

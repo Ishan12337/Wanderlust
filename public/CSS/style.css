@@ -1,13 +1,11 @@
 body {
-   font-family: "Plus Jakarta Sans", sans-serif !important;
+   font-family: 'Poppins', sans-serif !important;
    display: flex;
    flex-direction: column;
    min-height: 100vh;
-   /* background: linear-gradient(to right, #f9f9f9, #f0f0ff); */
-   /* background: url('/images/travel-bg.jpg') no-repeat center center fixed;
-  background-size: cover;
-  opacity: 0.97; */
-  background: linear-gradient(to bottom, #f8f9ff, #ffffff);
+  background-color: #2EC4B6;
+  background-repeat: no-repeat; 
+
 }
 
 .container{
@@ -29,9 +27,6 @@ body {
     color: #222222 !important;
  }
 
- /* #logout{
-     margin-left: 10px; 
- } */
 
  /* footer */
 .f-info-links a{
@@ -71,45 +66,33 @@ body {
 .listing-card{
     border: none !important;
     margin-bottom: 2rem;
-    border-radius: 5px !important;
+    /* border-radius: 5px !important; */
 }
 
-.listing-card:hover {            
+/* .listing-card:hover {            
     transform: scale(1.02);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0);
     transition: all 0.3s ease;
-    border-radius: 35px !important;
-}
-
-
-/* .listing-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border-radius: 35px !important;
+    border-radius: 5px !important;
 } */
 
-/* .listing-card:hover{
-    opacity: 0.2;
-    background-color: white;
-} */
 
 .card-img-top {
-    border-radius: 15px !important;
+    border-radius: 5px !important;
     height: 200px;
-    width: 100%;
+    width: 35vw;
     /* object-fit: cover !important; */
 }
 .card-img-top:hover {
      transform: scale(1.02);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    border-radius: 15px !important;
+    border-radius: 5px !important;
 } 
 
 
 .card-body{
-    padding: 0 !important;
+    padding: 1 !important;
 }
 
 .card-text p {
@@ -126,10 +109,6 @@ body {
     opacity: 0;
 }
 
-/* .card-img-overlay:hover{
-    opacity: 0.2;
-    background-color: white;
-} */
 
 /* new page  lec = 49.5*/
 .add-btn{
@@ -163,14 +142,6 @@ body {
     display: flex;
 }
 
-/* .card-body{
-        max-width: 600px;
-        width: 100%;
-        margin-top: 10px;
-        font-family: sans-serif;
-        line-height: 1.6;
-      } */
-
 /* navbar.ejs*/
 
 .btn-search{
@@ -185,10 +156,10 @@ body {
   }
   .btn-input{
    border-radius: 1rem;
-   padding-left: 1.5rem;
+   padding-left: 1rem;
   }
  .navbar-nav-search{
-  margin-left: 36rem;
+  margin-left: 32rem;
 
  }
 
@@ -210,7 +181,7 @@ body {
 
  #wanderlust{
   font-size: smaller;
-  margin-left: 5px;
+  margin-left: 1px;
  }
  .navbar-brand{
   font-size: x-large;
@@ -271,19 +242,19 @@ body {
    
   }
   .tax-toggle{
-    border: 1px black solid;
+    border: 1px white solid;
     border-radius: 1.2rem;
     height: 3.1rem;
     padding: 1rem;
     display: flex;
     align-items: center;
-    margin-left: 4.5rem;
+    margin-left: 2rem !important;
     margin-top: 10px;
     
   }
   .tax-toggle:hover{
-    border: white;
-    background-color: orange;
+    border: 1px black solid;
+    /* background-color: orange; */
     transform: scale(1.02);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0);
     transition: all 0.3s ease;

@@ -10,15 +10,21 @@
     color: white;
     border-radius: 1rem;
   }
- 
 
+  .nav-link{
+    margin-right: 10px;
+  }
+  /* background: linear-gradient(to right, #7b9799, #ffffff); */
+/* background: linear-gradient(to right, #f9f9f9, #f0f0ff); */
+/* style=" background: #E5F6FE;" */
 </style>
 
 <body id="navbar-page" class="navbar-page">
   
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top" style="background: linear-gradient(to right, #f9f9f9, #f0f0ff);">
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-location-arrow"></i> <b id="wanderlust">Wanderlust</b></a>    
+      <a class="navbar-brand" href="/listings"> <i class="fa-solid fa-plane-departure me-2" style="color: #2c3e50; font-size: 1.2rem;"></i>
+         <b id="wanderlust">Wanderlust</b></a>    
       <button 
       class="navbar-toggler" 
       type="button" 
@@ -42,21 +48,37 @@
         </form>
        </div>
 
-       
-        <div class="navbar-nav ms-auto">
-          <% if(!currUser) { %>
-          <a class="nav-link" id="nav-logSign" href="/signup"><b>signup</b></a>
-          <a class="nav-link" id="nav-logSign" href="/login"><b>Login</b></a>
-          <% } %>
-
-          <% if(currUser) { %>
-             
-             <div class="user-username"><h6 id="user-name"></h6>       <!--   username:     <i class="fa-solid fa-circle-user"></i> -->
-           <a id="curr-UserName">  <i id="circle-icon" class="fa-solid fa-circle-user"></i>  <i> <b><i><%= currUser.username %> </i></b> </i></a>    
-          </div>
-          <a class="nav-link" id="logout" href="/logout"> <b>Logout</b> </a> 
-          <% } %>
+       <!-- copy paste m -->
         </div>
+         
+
+        <% if (currUser) { %>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+              <i class="fa-solid fa-user"></i> <%= currUser.username %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href = "/profile">Profile</a></li>
+              <!-- <li><a class="dropdown-item" href="/my-listings">My Listings</a></li> -->
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+          </div>
+          <a class="nav-link" href="/notifications">
+            <i class="fa-solid fa-bell"></i>
+          </a>
+        <% } else { %>
+          <a class="nav-link" id="nav-logSign" href="/signup"><b>Signup</b></a>
+          <a class="nav-link" id="nav-logSign" href="/login"><b>Login</b></a>
+        <% } %>
+         
+        <!-- <a class="nav-link" href="/notifications">
+          <i class="fa-solid fa-bell"></i>
+        </a> -->
+        
+        
+
+
 
 
       </div>
