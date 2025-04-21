@@ -1,0 +1,67 @@
+
+<% layout("layouts/boilerplate") %>
+
+<style>
+/* Existing landing styles... */
+.landing-container {
+    height: 90vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") center center/cover no-repeat;
+    color: white;
+    padding: 2rem;
+    text-shadow: 1px 1px 5px black;
+}
+
+.landing-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    animation: fadeDown 1.5s ease-in-out forwards;
+    opacity: 0;
+}
+
+.landing-subtitle {
+    font-size: 1.5rem;
+    max-width: 600px;
+    animation: fadeUp 2s ease-in-out forwards;
+    opacity: 0;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+a.btn {
+    animation: fadeUp 2.5s ease-in-out forwards;
+    opacity: 0;
+    animation-delay: 1s;
+}
+
+
+</style>
+
+
+<div class="landing-container text-center d-flex flex-column justify-content-center align-items-center">
+  <h1 class="landing-title">Welcome to Wanderlust 🌍</h1>
+  <p class="landing-subtitle">Find your next adventure in the world's most beautiful stays.</p>
+  <a href="/listings" class="btn btn-outline-light mt-3">Explore Listings</a>
+</div>

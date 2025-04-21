@@ -48,6 +48,22 @@ app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.redirect("/listings");  // render a homepage
+});
+
+app.get("/", (req, res) => {
+    res.render("home");
+});
+
+// app.get("/", (req, res) => {
+//     res.render("home");
+// });
+  
+
+
+
+
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
@@ -77,12 +93,21 @@ app.use(session(sessionOptions));
 app.use(flash());
 
 
-app.use((req, res, next) => {
-    res.locals.currUser = req.user || null;
+
+  app.use((req, res, next) => {
+    res.locals.currUser = req.user || null;  // Setting currUser globally
     next();
-  });
+});
 
 
+
+
+//   app.use((req,res,next) => {
+//     res.locals.success = req.flash("success");
+//     res.locals.error = req.flash("error");
+//     res.locals.currUser = req.user || null;
+//     next();
+// });
 
 //passport
 app.use(passport.initialize());
