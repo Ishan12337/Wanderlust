@@ -1,86 +1,129 @@
-
 <style>
-   .btn-search{
-    background-color: #fe424d;
-    color: white;
-    border-radius: 1rem;
+  body {
+    background-color: white !important;
+    height: 120px !important;
   }
-  .btn-search:hover{
+
+  .btn-search {
     background-color: #fe424d;
     color: white;
     border-radius: 1rem;
   }
 
-  .nav-link{
+  .btn-search:hover {
+    background-color: #fe424d;
+    color: white;
+  }
+
+  .nav-link {
     margin-right: 10px;
   }
-  /* background: linear-gradient(to right, #7b9799, #ffffff); */
-/* background: linear-gradient(to right, #f9f9f9, #f0f0ff); */
-/* style=" background: #E5F6FE;" */
+
+  .navbar {
+    background-color: white !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  .btn-input{
+    border-radius: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .navbar-nav-search {
+      margin-top: 1rem;
+      width: 100%;
+    }
+
+    .navbar-nav-search form {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  /* Make navbar fixed and increase its height */
+.custom-navbar {
+  background-color: white !important;
+  height: 80px; /* adjust as needed */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1030; /* ensures it stays above other elements */
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+/* Push page content below navbar */
+body {
+  padding-top: 80px; /* same as navbar height */
+}
+
+/* Optional: adjust logo size for larger navbar */
+#wanderlust {
+  font-size: 1.25rem;
+  margin-left: 5px;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  color: #fe424d !important;
+}
+
 </style>
 
-<body id="navbar-page" class="navbar-page">
-  
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<body id="navbar-page" class="navbar-page+">
+  <nav class="navbar navbar-expand-md fixed-top custom-navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"> <i class="fa-solid fa-plane-departure me-2" style="color: #2c3e50; font-size: 1.2rem;"></i>
-         <b id="wanderlust">Wanderlust</b></a>    
-      <button 
-      class="navbar-toggler" 
-      type="button" 
-      data-bs-toggle="collapse"
-       data-bs-target="#navbarNavAltMarkup"
-       >
+      <!-- Brand -->
+      <a class="navbar-brand" href="/listings">
+        <i class="fa-solid fa-plane-departure me-2" style="color: #2c3e50; font-size: 1.2rem;"></i>
+        <b id="wanderlust">Wanderlust</b>
+      </a>
+
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      <!-- Collapsible Content -->
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <!-- <a class="nav-link" href="/">Home</a> -->
-          <a class="nav-link" href="/listings" style="opacity: 1;">Explore</a>
-          <!-- <a class="nav-link" href="/listings/new">Add new Listing</a>   -->
-          <a class="nav-link" id="add-listing" href="/listings/new">Wanderlust your Home</a> 
+        <!-- Left-side nav links -->
+        <div class="navbar-nav me-auto mb-2 mb-md-0">
+          <a class="nav-link" href="/listings">Explore</a>
+          <a class="nav-link" href="/listings/new">Wanderlust your Home</a>
         </div>
-        
-       <div class="navbar-nav-search ">
-        <form class="d-flex" role="search">
-          <input class="form-control-search me-2 btn-input" type="search" placeholder="Search destination" aria-label="Search" style="background: linear-gradient(to right, #f9f9f9, #f0f0ff);">
-          <button class="btn btn-search" type="submit">Search</button>
-        </form>
-       </div>
 
-       <!-- copy paste m -->
+        <!-- Search Bar -->
+        <div class="navbar-nav-search d-flex align-items-center me-3">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 btn-input" type="search" placeholder="Search destination" aria-label="Search"
+              style="background: linear-gradient(to right, #f9f9f9, #f0f0ff);">
+            <button class="btn btn-search" type="submit">Search</button>
+          </form>
         </div>
-         
 
-        <% if (currUser) { %>
-          <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-              <i class="fa-solid fa-user"></i> <%= currUser.username %>
+        <!-- Right-side Auth/User Menu -->
+        <div class="d-flex align-items-center">
+          <% if (currUser) { %>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown">
+                <i class="fa-solid fa-user"></i> <%= currUser.username %>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              </ul>
+            </div>
+            <a class="nav-link" href="/notifications">
+              <i class="fa-solid fa-bell"></i>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href = "/profile">Profile</a></li>
-              <!-- <li><a class="dropdown-item" href="/my-listings">My Listings</a></li> -->
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/logout">Logout</a></li>
-            </ul>
-          </div>
-          <a class="nav-link" href="/notifications">
-            <i class="fa-solid fa-bell"></i>
-          </a>
-        <% } else { %>
-          <a class="nav-link" id="nav-logSign" href="/signup"><b>Signup</b></a>
-          <a class="nav-link" id="nav-logSign" href="/login"><b>Login</b></a>
-        <% } %>
-         
-        <!-- <a class="nav-link" href="/notifications">
-          <i class="fa-solid fa-bell"></i>
-        </a> -->
-        
-        
-
-
-
-
+          <% } else { %>
+            <a class="nav-link" href="/signup"><b>Signup</b></a>
+            <a class="nav-link" href="/login"><b>Login</b></a>
+          <% } %>
+        </div>
       </div>
     </div>
   </nav>

@@ -26,6 +26,7 @@ const ejsMate = require("ejs-mate");            //ejs mate is a boiler plate to 
 const dbUrl = process.env.ATLASDB_URL;
 
 
+
 main()
 .then(() => {
     console.log("connected to db!");
@@ -66,7 +67,7 @@ app.get("/", (req, res) => {
 
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl,
+    mongoUrl: dbUrl,  //MONGO_URL
     crypto:{
          secret : process.env.SECRET,
     },
